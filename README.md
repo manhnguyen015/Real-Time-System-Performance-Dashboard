@@ -42,6 +42,23 @@ CREATE TABLE Performance (
     disk_usage NUMERIC(5,2)
 );
 ```
+### Docker Setup on macOS
+
+If you are using macOS, you can run SQL Server in a Docker container. Here’s how to do it:
+
+1. **Install Docker**: Make sure Docker Desktop is installed and running on your macOS.
+2. **Pull the SQL Server image**:
+    ```bash
+    docker pull mcr.microsoft.com/mssql/server
+    ```
+3. **Run the SQL Server container**:
+    ```bash
+    docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=YourStrong!Passw0rd' \
+    -p 1433:1433 --name sqlserver \
+    -d mcr.microsoft.com/mssql/server
+    ```
+
+4. **Connect to the container** using Azure Data Studio by entering `localhost` as the server name and `SA` as the username with the password you set.
 
 ## Script Overview
 
